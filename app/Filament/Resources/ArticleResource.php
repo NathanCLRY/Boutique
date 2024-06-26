@@ -4,20 +4,21 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
-use App\Models\Category;
+use App\Models\Article;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\CategoryResource\Pages;
+use App\Filament\Resources\ArticleResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\CategoryResource\RelationManagers;
+use App\Filament\Resources\ArticleResource\RelationManagers;
 
-class CategoryResource extends Resource
+class ArticleResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = Article::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -26,6 +27,10 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name'),
+                TextInput::make('brand'),
+                Textarea::make('description'),
+                TextInput::make('price')->numeric()->prefix('€'),
+                TextInput::make('image'),
             ]);
     }
 
@@ -35,6 +40,10 @@ class CategoryResource extends Resource
             ->columns([
                 TextColumn::make('id'),
                 TextColumn::make('name'),
+                TextColumn::make('brand'),
+                TextColumn::make('description'),
+                TextColumn::make('price')->money('EUR'),
+                TextColumn::make('image'),
                 TextColumn::make('created_at'),
                 TextColumn::make('updated_at'),
             ])
@@ -61,9 +70,9 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'index' => Pages\ListArticles::route('/'),
+            'create' => Pages\CreateArticle::route('/create'),
+            'edit' => Pages\EditArticle::route('/{record}/edit'),
         ];
     }
 }
