@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(Category::class)->constrained()->onDelete('cascade');
             $table->string('name', 60);
             $table->string('brand', 60);
+            $table->text('description');
             $table->float('price');
             $table->string('image', 255);
             $table->timestamps();
