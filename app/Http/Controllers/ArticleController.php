@@ -13,6 +13,6 @@ class ArticleController extends Controller
     {
         $categories = Category::all();
         $articles = Article::all();
-        return view('articles.index', compact('articles'));
+        return view('articles.index', compact('articles', 'categories'));
     }
 }
