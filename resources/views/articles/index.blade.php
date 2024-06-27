@@ -18,5 +18,8 @@
 	</div>
 </div>
 @endforeach
+<div class="m-auto">
+	{{ $articles->links() }}
+</div>
 
 @endsection
