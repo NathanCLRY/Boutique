@@ -9,7 +9,7 @@ use App\Http\Controllers\ProfileController;
 // });
 
 Route::get('/', [ArticleController::class, 'index'])->name('article.index');
-
+Route::get('/cat/{category}', [ArticleController::class, 'category'])->name('article.category');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
