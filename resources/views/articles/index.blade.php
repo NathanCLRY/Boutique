@@ -11,9 +11,8 @@
 			<div class="px-5 pb-5">
 				<h3 class="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">{{$article->name}}</h3>
 				<div class="flex items-center justify-between">
-					<span class="text-3xl font-bold text-gray-900 dark:text-white">{{$article->price}} €</span>
-					<a href="#"
-					class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Voir plus</a>
+					<span class="text-3xl font-bold text-gray-900 dark:text-white">{{number_format($article->price,2)}} €</span>
+					<a href="{{route('article.show', $article)}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Voir plus</a>
 				</div>
 			</div>
 		</div>
